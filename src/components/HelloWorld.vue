@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import axios from 'axios';
 import { ref } from 'vue'
+import { BASE_URL } from '../config';
 
 // defineProps<{ msg: string }>()
 
@@ -9,7 +10,7 @@ const receivedObject = ref(null)
 
 const getObject = async () => {
   try {
-    const response = await axios.get('http://localhost:3000/entries');
+    const response = await axios.get(`${BASE_URL}/entries`);
   
     if (response.status === 200) {
       receivedObject.value = response.data;
