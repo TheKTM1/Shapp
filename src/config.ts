@@ -1,0 +1,1 @@
+export const BASE_URL = import.meta.env.MODE === 'production' ? 'https://shapp-backend.onrender.com' : 'http://localhost:3000';
