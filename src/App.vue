@@ -1,5 +1,14 @@
 <script setup lang="ts">
+import Swal from 'sweetalert2';
 import HelloWorld from './components/HelloWorld.vue'
+
+const swalTest = () => {
+  Swal.fire({
+    title: 'Uwaga',
+    text: 'Działa uwu',
+    icon: 'success'
+  });
+}
 </script>
 
 <template>
@@ -12,6 +21,7 @@ import HelloWorld from './components/HelloWorld.vue'
     </a>
   </div>
   <HelloWorld/>
+  <button @click="swalTest">Swal test</button>
 </template>
 
 <style scoped>
