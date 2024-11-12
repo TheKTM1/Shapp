@@ -1,27 +1,55 @@
 <script setup lang="ts">
 import Swal from 'sweetalert2';
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
+import Card from './components/Card.vue';
+import { onMounted, ref } from 'vue';
 
-const swalTest = () => {
-  Swal.fire({
-    title: 'Uwaga',
-    text: 'Działa uwu',
-    icon: 'success'
-  });
+const item = ref(false);
+let swalMessage: any;
+let interval = ref<number | undefined>(undefined);
+
+const setItemValue = () => {
+  item.value = true;
 }
+
+const checkForValue = () => {
+  if (item.value == true) {
+    clearInterval(interval.value)
+    
+    swalMessage.close()
+
+    Swal.fire({
+      text: 'Połączono!',
+      icon: 'success',
+      toast: true,
+      position: 'top',
+      showConfirmButton: false,
+      timer: 2000
+    });
+  }
+}
+
+onMounted(() => {
+  if (item.value == false) {
+    swalMessage = Swal.fire({
+      text: 'Oczekiwanie na odpowiedź serwera...',
+      icon: 'info',
+      toast: true,
+      position: 'top',
+      showConfirmButton: false
+    });
+
+    interval.value = setInterval(checkForValue, 500);
+  }
+})
 </script>
 
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld/>
-  <button @click="swalTest">Swal test</button>
+  <!-- <HelloWorld/> -->
+  <Card title="Nowy wpis"><p style="font-size: small;text-align: left;padding: 0 0.5rem;">Dodaj wpis z zakupów do późniejszego rozliczenia.</p></Card>
+  <Card title="Ostatnie wydatki"><p style="font-size: small;text-align: left;padding: 0 0.5rem;">Przejrzyj listę nagromadzonych wydatków.</p></Card>
+  <Card title="Rozliczenie miesiąca"><p style="font-size: small;text-align: left;padding: 0 0.5rem;">Zatwierdź dodane wydatki i zakończ ostatni miesiąc.</p></Card>
+  <button @click="setItemValue">Swal test</button>
 </template>
 
 <style scoped>

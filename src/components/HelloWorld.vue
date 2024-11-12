@@ -22,7 +22,7 @@ const getObject = async () => {
 </script>
 
 <template>
-  <div class="card">
+  <div>
     <!-- <button type="button" @click="count++">count is {{ count }}</button> -->
     <p>{{ receivedObject ?? 'None' }}</p>
     
