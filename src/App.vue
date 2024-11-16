@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Swal from 'sweetalert2';
-import Card from './components/Card.vue';
+import Menu from './views/Menu.vue';
 import { onMounted, ref } from 'vue';
 
 const item = ref(false);
@@ -44,26 +44,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <Card title="Nowy wpis" :icon="['far', 'clipboard']"><p style="font-size: small;text-align: left;padding: 0 0.5rem;">Dodaj wpis z zakupów do późniejszego rozliczenia.</p></Card>
-  <Card title="Ostatnie wydatki" :icon="['far', 'calendar']"><p style="font-size: small;text-align: left;padding: 0 0.5rem;">Przejrzyj listę nagromadzonych wydatków.</p></Card>
-  <Card title="Rozliczenie miesiąca" :icon="['far', 'credit-card']"><p style="font-size: small;text-align: left;padding: 0 0.5rem;">Zatwierdź dodane wydatki i zakończ ostatni miesiąc.</p></Card>
-  <button @click="setItemValue">Swal test</button>
-  <RouterLink to="/new-entry">a</RouterLink>
-  <RouterLink to="/entries-list">b</RouterLink>
   <RouterView/>
+  <button @click="setItemValue">Swal test</button>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+<style>
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 </style>
