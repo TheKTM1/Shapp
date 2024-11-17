@@ -45,7 +45,7 @@ onMounted(() => {
 
 <template>
   <RouterView/>
-  <button @click="setItemValue">Swal test</button>
+  <!-- <button @click="setItemValue">Swal test</button> -->
 </template>
 
 <style>
