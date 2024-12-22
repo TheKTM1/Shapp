@@ -1,30 +1,50 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import Swal from 'sweetalert2';
+import { onMounted, ref } from 'vue';
+
+const item = ref(false);
+let swalMessage: any;
+let interval = ref<number | undefined>(undefined);
+
+const checkForValue = () => {
+  if (item.value == true) {
+    clearInterval(interval.value)
+    
+    swalMessage.close()
+
+    Swal.fire({
+      text: 'Połączono!',
+      icon: 'success',
+      toast: true,
+      position: 'top',
+      showConfirmButton: false,
+      timer: 2000
+    });
+  }
+}
+
+onMounted(() => {
+  if (item.value == false) {
+    swalMessage = Swal.fire({
+      text: 'Oczekiwanie na odpowiedź serwera...',
+      icon: 'info',
+      toast: true,
+      position: 'top',
+      showConfirmButton: false
+    });
+
+    interval.value = setInterval(checkForValue, 500);
+  }
+})
 </script>
 
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld/>
+  <RouterView/>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+<style>
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 </style>
