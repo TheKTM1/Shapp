@@ -5,5 +5,5 @@ export const formatDate = (date: string | Date): string => {
 }
 
 export const formatPrice = (price: string | number, sign: string = ''): string => {
-    return `${sign}${price} zł`;
+    return `${price == 0 ? '' : sign}${price} zł`;
 }

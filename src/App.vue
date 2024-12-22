@@ -1,15 +1,10 @@
 <script setup lang="ts">
 import Swal from 'sweetalert2';
-import Menu from './views/Menu.vue';
 import { onMounted, ref } from 'vue';
 
 const item = ref(false);
 let swalMessage: any;
 let interval = ref<number | undefined>(undefined);
-
-const setItemValue = () => {
-  item.value = true;
-}
 
 const checkForValue = () => {
   if (item.value == true) {
@@ -45,7 +40,6 @@ onMounted(() => {
 
 <template>
   <RouterView/>
-  <!-- <button @click="setItemValue">Swal test</button> -->
 </template>
 
 <style>

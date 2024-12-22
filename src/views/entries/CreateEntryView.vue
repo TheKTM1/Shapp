@@ -5,15 +5,17 @@ import { BASE_URL } from '../../config';
 import Swal from 'sweetalert2';
 
 const form = ref({
-    cost: '',
-    description: ''
+    cost: 0,
+    description: '',
+    excludedCost: 0
 });
 
 const addEntry = async () => {
     try {
         const response = await axios.post(`${BASE_URL}/entries`, {
             cost: form.value.cost,
-            description: form.value.description
+            description: form.value.description,
+            excludedCost: form.value.excludedCost
         });
 
         if (response.status !== 200) {
@@ -50,6 +52,10 @@ const addEntry = async () => {
         <div style="display: flex; flex-direction: column;">
             <label for="description" style="text-align: left;">Opis</label>
             <textarea id="description" rows="4" v-model="form.description" />
+        </div>
+        <div style="display: flex; flex-direction: column;">
+            <label for="excluded-cost" style="text-align: left;">Wyłączone z ceny</label>
+            <input type="number" id="excluded-cost" value="" v-model="form.excludedCost" />
         </div>
         <button @click.prevent="addEntry">Dodaj</button>
     </div>
