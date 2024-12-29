@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Swal from 'sweetalert2';
 import { onMounted, ref } from 'vue';
+import PWA from './components/PWA.vue';
 
 const item = ref(false);
 let swalMessage: any;
@@ -40,6 +41,8 @@ onMounted(() => {
 
 <template>
   <RouterView/>
+
+  <PWA/>
 </template>
 
 <style>
