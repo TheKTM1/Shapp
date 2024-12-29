@@ -8,15 +8,15 @@ import { ref } from 'vue';
 
     const installPrompt = ref<BeforeInstallPromptEvent | null>(null);
 
-    const registerServiceWorker = async (): Promise<void> => {
-        if ('serviceWorker' in navigator) {
-            try {
-                await navigator.serviceWorker.register('/service-worker.js');
-            } catch (e) {
-                console.error('Service worker registration failed.');
-            }
-        }
-    };
+    // const registerServiceWorker = async (): Promise<void> => {
+    //     if ('serviceWorker' in navigator) {
+    //         try {
+    //             await navigator.serviceWorker.register('/service-worker.js');
+    //         } catch (e) {
+    //             console.error('Service worker registration failed.');
+    //         }
+    //     }
+    // };
 
     window.addEventListener('beforeinstallprompt', (e: Event) => {
         e.preventDefault();
