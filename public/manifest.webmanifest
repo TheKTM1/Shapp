@@ -1,0 +1,16 @@
+{
+    "name": "Shapp",
+    "short_name": "Shapp",
+    "icons": [
+        {
+            "src": "icons/app_icon_1024.png",
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "any"
+        }
+    ],
+    "start_url": "/Shapp/",
+    "display": "standalone",
+    "description": "Shopping Settlement Application",
+    "orientation": "portrait"
+}
